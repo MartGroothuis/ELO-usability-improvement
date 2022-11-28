@@ -1,0 +1,5 @@
+$SELECTOR_FOOBARS: "." + getGlobal("CONFIG.CLASS.foobar");
+
+#{$SELECTOR_FOOBARS} {
+    font-family: monospace;
+}

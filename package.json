@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "build-webpack-config": "tsc -p tsconfig.webpack.json",
+    "build-userscript": "webpack --config .userscripter-temp/webpack.config.js",
+    "build": "npm run clean && npm run build-webpack-config && npm run build-userscript && npm run clean",
+    "clean": "rm -rf .userscripter-temp"
+  },
+  "dependencies": {
+    "@typed/compose": "^1.0.0",
+    "@types/app-root-path": "^1.2.4",
+    "app-root-path": "^3.0.0",
+    "preact": "^10.4.0",
+    "ts-preferences": "^2.0.0",
+    "ts-type-guards": "^0.6.1",
+    "typescript": "^3.7.4",
+    "userscript-metadata": "^1.0.0",
+    "userscripter": "^1.5.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
