@@ -62,6 +62,9 @@ function updateHomePage() {
   let banner = document.getElementById("CourseImageBannerPlaceholderId")
   banner.remove();
 
+  let headerBar = document.getElementsByClassName("d2l-branding-navigation-background-color d2l-visible-on-ancestor-target")[0]
+  headerBar.style.backgroundColor = "#05ACFF";
+
   // remove homepage-col-6 add homepage-col-12 to all in halfWidth
   let halfWidth = document.getElementsByClassName('homepage-col-6');
   for (let i = 0; i < halfWidth.length; i++) {
@@ -73,11 +76,9 @@ function updateHomePage() {
 }
 
 function updateCardLinks() {
+  // if (!checkIfLoaded("d2l-card-container")) return;
   let cards = document.getElementsByClassName('d2l-card-container');
-
-  for (let i = 0; i < cards.length; i++) {
-    console.log(cards[i]);
-  }
+  console.log(cards)
 }
 
 function parseUrl() {

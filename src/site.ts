@@ -7,3 +7,4 @@ export const HOSTNAME = U.hostname;
 
 export const SELECTOR_HEADING = "body h1";
 export const SELECTOR_MAIN = "body div";
+export const SELECTOR_HEADER = "d2l-branding-navigation-background-color";

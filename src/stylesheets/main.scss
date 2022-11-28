@@ -1,11 +1,24 @@
 $SELECTOR_HEADING: getGlobal("SITE.SELECTOR_HEADING");
 $HEADING_PREFIX_AND_SUFFIX: " ★ ";
 
-html body {
-    background-color: rgb(144, 238, 144);
-    color: green;
+:root {
+    --main-color: #05ACFF;
 }
 
-#{$SELECTOR_HEADING}::before, #{$SELECTOR_HEADING}::after {
-    content: "#{$HEADING_PREFIX_AND_SUFFIX}";
+// This makes the little accent bar at the top of the page change color
+html {
+    --d2l-branding-primary-color: var(--main-color);
 }
+
+.main-color {
+    background-color: var(--main-color);
+}
+
+// html body {
+//     background-color: rgb(144, 238, 144);
+//     color: green;
+// }
+
+// #{$SELECTOR_HEADING}::before, #{$SELECTOR_HEADING}::after {
+//     content: "#{$HEADING_PREFIX_AND_SUFFIX}";
+// }

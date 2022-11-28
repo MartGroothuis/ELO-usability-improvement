@@ -7,6 +7,6 @@ export default {
     hostname: "leren.windesheim.nl",
     sitename: "leren.windesheim.nl",
     namespace: "https://github.com/Mart-0",
-    runAt: "document-start",
+    runAt: "document-end",
     hostedAt: "https://example.com/userscripts/",
 } as const;

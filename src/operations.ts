@@ -3,52 +3,28 @@ import { ALWAYS, DOMCONTENTLOADED } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
 
 import { P, Preferences } from "~src/preferences";
-import { menuGenerator } from "~src/preferences-menu";
 import * as SITE from "~src/site";
-import T from "~src/text";
-import U from "~src/userscript";
 
-import insertFoobars from "./operations/foobars";
+import modifyMenuBar from "./operations/global/modifyMenuBar";
+import removeBanner from "./operations/home/removeBanner";
+import widenWidgets from "./operations/home/widenWidgets";
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
     operation({
-        description: "change heading content",
+        description: "modify header",
         condition: ALWAYS,
-        dependencies: { heading: SITE.SELECTOR_HEADING },
-        action: e => {
-            e.heading.textContent = T.heading;
-        },
+        action: modifyMenuBar
     }),
     operation({
-        description: "insert foobars",
-        condition: () => Preferences.get(P.foobars._.insert),
-        dependencies: { mainDiv: SITE.SELECTOR_MAIN },
-        action: insertFoobars,
+        description: "remove home page banner",
+        condition: ALWAYS,
+        action: removeBanner
     }),
     operation({
-        description: "change title",
+        description: "make home page widgets full page width",
         condition: ALWAYS,
-        action: () => {
-            document.title = document.title + T.title_suffix;
-        },
-    }),
-    operation({
-        description: "print console messages",
-        condition: ALWAYS,
-        action: () => {
-            log.log(T.messages.greeting(Preferences.get(P.username)));
-            log.log(T.messages.info(document.querySelectorAll("div").length));
-        },
-    }),
-    operation({
-        description: "insert preferences menu",
-        condition: ALWAYS,
-        action: () => {
-            const form = menuGenerator(P);
-            document.body.appendChild(form);
-        },
-        deferUntil: DOMCONTENTLOADED,
-    }),
+        action: widenWidgets
+    })
 ];
 
 export default OPERATIONS;

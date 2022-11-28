@@ -3,7 +3,6 @@ import { Stylesheets, stylesheet } from "userscripter/lib/stylesheets";
 
 import { P, Preferences } from "~src/preferences";
 
-import stylesheetFoobars from "./stylesheets/foobars.scss";
 import stylesheetMain from "./stylesheets/main.scss";
 
 function i(x: string) {
@@ -14,11 +13,6 @@ const STYLESHEETS = {
     main: stylesheet({
         condition: ALWAYS,
         css: stylesheetMain,
-    }),
-    foobars: stylesheet({
-        condition: () => Preferences.get(P.foobars._.insert),
-        id: i("foobars"),
-        css: stylesheetFoobars,
     }),
 } as const;
 
