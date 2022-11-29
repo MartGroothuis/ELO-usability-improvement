@@ -21,8 +21,7 @@
   if (window.top === window.self) {
     parseUrl();
     updateHomePage();
-  }
-  else {
+  } else {
     updateIframe();
   }
 })();
@@ -30,10 +29,10 @@
 // check every 10 miliseconds if the element d2l-heading-1 is there
 function checkIfLoaded(className) {
   if (document.getElementsByClassName(className)[0]) {
-    console.log("Loaded:", className)
+    console.log("Loaded:", className);
     return true;
   } else {
-    console.log('Not loaded');
+    console.log("Not loaded");
     setTimeout(checkIfLoaded, 10);
   }
 }
@@ -42,14 +41,14 @@ function checkIfLoaded(className) {
 function updateIframe() {
   // if (!checkIfLoaded("content-panel")) return;
 
-  let title = document.getElementsByClassName('d2l-heading-1')[0]
+  let title = document.getElementsByClassName("d2l-heading-1")[0];
   console.log(title);
-  title.style.backgroundColor = 'yellow';
+  title.style.backgroundColor = "yellow";
 
   // Add click listener
-  let navigation = document.getElementsByClassName('navigation-menu')[0]
-  navigation.addEventListener('click', function () {
-    console.log('Clicked');
+  let navigation = document.getElementsByClassName("navigation-menu")[0];
+  navigation.addEventListener("click", function () {
+    console.log("Clicked");
     checkIfLoaded("content-panel");
   });
 }
@@ -59,16 +58,18 @@ function updateHomePage() {
   // if (!checkIfLoaded("d2l-body")) return;
 
   // delete banner
-  let banner = document.getElementById("CourseImageBannerPlaceholderId")
+  let banner = document.getElementById("CourseImageBannerPlaceholderId");
   banner.remove();
 
-  let headerBar = document.getElementsByClassName("d2l-branding-navigation-background-color d2l-visible-on-ancestor-target")[0]
+  let headerBar = document.getElementsByClassName(
+    "d2l-branding-navigation-background-color d2l-visible-on-ancestor-target"
+  )[0];
   headerBar.style.backgroundColor = "#05ACFF";
 
   // remove homepage-col-6 add homepage-col-12 to all in halfWidth
-  let halfWidth = document.getElementsByClassName('homepage-col-6');
+  let halfWidth = document.getElementsByClassName("homepage-col-6");
   for (let i = 0; i < halfWidth.length; i++) {
-    halfWidth[i].classList.replace('homepage-col-6', 'homepage-col-12');
+    halfWidth[i].classList.replace("homepage-col-6", "homepage-col-12");
   }
 
   // Update the card links so they go to the correct page
@@ -77,8 +78,8 @@ function updateHomePage() {
 
 function updateCardLinks() {
   // if (!checkIfLoaded("d2l-card-container")) return;
-  let cards = document.getElementsByClassName('d2l-card-container');
-  console.log(cards)
+  let cards = document.getElementsByClassName("d2l-card-container");
+  console.log(cards);
 }
 
 function parseUrl() {

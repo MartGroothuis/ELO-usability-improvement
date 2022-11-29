@@ -2,16 +2,16 @@ $SELECTOR_HEADING: getGlobal("SITE.SELECTOR_HEADING");
 $HEADING_PREFIX_AND_SUFFIX: " ★ ";
 
 :root {
-    --main-color: #05ACFF;
+  --main-color: #05acff;
 }
 
 // This makes the little accent bar at the top of the page change color
 html {
-    --d2l-branding-primary-color: var(--main-color);
+  --d2l-branding-primary-color: var(--main-color);
 }
 
 .main-color {
-    background-color: var(--main-color);
+  background-color: var(--main-color);
 }
 
 // html body {

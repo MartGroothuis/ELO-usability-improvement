@@ -10,21 +10,21 @@ import removeBanner from "./operations/home/removeBanner";
 import widenWidgets from "./operations/home/widenWidgets";
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
-    operation({
-        description: "modify header",
-        condition: ALWAYS,
-        action: modifyMenuBar
-    }),
-    operation({
-        description: "remove home page banner",
-        condition: ALWAYS,
-        action: removeBanner
-    }),
-    operation({
-        description: "make home page widgets full page width",
-        condition: ALWAYS,
-        action: widenWidgets
-    })
+  operation({
+    description: "modify header",
+    condition: ALWAYS,
+    action: modifyMenuBar,
+  }),
+  operation({
+    description: "remove home page banner",
+    condition: ALWAYS,
+    action: removeBanner,
+  }),
+  operation({
+    description: "make home page widgets full page width",
+    condition: ALWAYS,
+    action: widenWidgets,
+  }),
 ];
 
 export default OPERATIONS;

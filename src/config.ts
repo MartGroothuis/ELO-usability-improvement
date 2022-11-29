@@ -13,6 +13,6 @@ export const OPERATIONS_EXTRA_TRIES = 3;
 const c = (x: string) => PREFIX_CLASS + x;
 
 export const CLASS = {
-    foobar: c("foobar"),
-    preferenceDescription: c("preference-description"),
+  foobar: c("foobar"),
+  preferenceDescription: c("preference-description"),
 } as const;
