@@ -3,6 +3,8 @@ $HEADING_PREFIX_AND_SUFFIX: " ★ ";
 
 :root {
   --main-color: #05acff;
+  --main-text-color: #000;
+  // --d2l-color-celestine: #ffcb05;
 }
 
 // This makes the little accent bar at the top of the page change color
@@ -12,6 +14,20 @@ html {
 
 .main-color {
   background-color: var(--main-color);
+}
+
+.d2l-branding-navigation-dark-foreground-color a.d2l-navigation-s-link,
+.d2l-branding-navigation-dark-foreground-color a.d2l-navigation-s-link:link,
+.d2l-branding-navigation-dark-foreground-color a.d2l-navigation-s-link:visited,
+.d2l-branding-navigation-dark-foreground-color div.d2l-navigation-s-item > span,
+.d2l-branding-navigation-dark-foreground-color
+  .d2l-navigation-s-group
+  .d2l-navigation-s-group-text,
+.d2l-branding-navigation-dark-foreground-color
+  .d2l-navigation-s-group
+  .d2l-navigation-s-group-wrapper
+  d2l-icon {
+  color: var(--main-text-color);
 }
 
 // html body {
