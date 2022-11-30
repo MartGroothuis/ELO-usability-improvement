@@ -4,6 +4,7 @@ import { Operation, operation } from "userscripter/lib/operations";
 
 import { P, Preferences } from "~src/preferences";
 import * as SITE from "~src/site";
+import { PageController } from "./controller/pageController";
 
 import modifyMenuBar from "./operations/global/modifyMenuBar";
 import removeBanner from "./operations/home/removeBanner";
@@ -17,14 +18,29 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
   }),
   operation({
     description: "remove home page banner",
-    condition: ALWAYS,
+    condition: PageController.isHomePage,
     action: removeBanner,
   }),
   operation({
     description: "make home page widgets full page width",
-    condition: ALWAYS,
+    condition: PageController.isHomePage,
     action: widenWidgets,
   }),
+  operation({
+    description: "Weird page test",
+    condition: PageController.isWeirdBetweenPage,
+    action: () => console.log("weird page")
+  }),
+  operation({
+    description: "Home page test",
+    condition: PageController.isHomePage,
+    action: () => console.log("home page")
+  }),
+  operation({
+    description: "Course page test",
+    condition: PageController.isCoursePage,
+    action: () => console.log("course page")
+  })
 ];
 
 export default OPERATIONS;
