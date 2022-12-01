@@ -5,6 +5,7 @@ import { Operation, operation } from "userscripter/lib/operations";
 import { P, Preferences } from "~src/preferences";
 import * as SITE from "~src/site";
 import { PageController } from "./controller/pageController";
+import removeContainer from "./operations/courseContent/removeContainer";
 
 import modifyMenuBar from "./operations/global/modifyMenuBar";
 import removeBanner from "./operations/home/removeBanner";
@@ -25,6 +26,11 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
     description: "make home page widgets full page width",
     condition: PageController.isHomePage,
     action: widenWidgets,
+  }),
+  operation({
+    description: "Remove container from course content",
+    condition: PageController.isCoursePage,
+    action: removeContainer,
   }),
   operation({
     description: "Weird page test",
