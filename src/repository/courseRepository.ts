@@ -1,4 +1,4 @@
-class CourseRepository {
+export class CourseRepository {
   private static instance: CourseRepository;
   private rootElement: string;
 
