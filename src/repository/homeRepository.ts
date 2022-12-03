@@ -25,4 +25,27 @@ export class HomeRepository {
 
     return widgets;
   }
+
+  public getCourses(): Promise<HTMLCollection> {
+    // try every 10 ms to find this element and return a promise when it is found
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        tries++;
+
+        // The index 0 here is for how high the course wrapper finds itself on the page compared to all the other homepage-col-12 items
+        let courses =
+			document.getElementsByClassName("d2l-my-courses-widget d2l-token-receiver")[0].shadowRoot?.children[0]?.shadowRoot?.children[2]?.children[0]?.children[0]?.shadowRoot?.children[1]?.shadowRoot?.children[1]?.children;
+
+        if (courses) {
+          clearInterval(interval);
+          resolve(courses);
+        }
+        if (tries > 1000) {
+          clearInterval(interval);
+          reject();
+        }
+      }, 10);
+    });
+  }
 }
