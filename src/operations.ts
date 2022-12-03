@@ -7,8 +7,7 @@ import * as SITE from "~src/site";
 import { PageController } from "./controller/pageController";
 
 import modifyMenuBar from "./operations/global/modifyMenuBar";
-import removeBanner from "./operations/home/removeBanner";
-import widenWidgets from "./operations/home/widenWidgets";
+import { redirectCourseWidget, removeBanner, widenWidgets } from "./operations/home";
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
   operation({
@@ -17,14 +16,19 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
     action: modifyMenuBar,
   }),
   operation({
-    description: "remove home page banner",
+    description: "Remove home page banner",
     condition: PageController.isHomePage,
     action: removeBanner,
   }),
   operation({
-    description: "make home page widgets full page width",
+    description: "Make home page widgets full page width",
     condition: PageController.isHomePage,
     action: widenWidgets,
+  }),
+  operation({
+    description: "Change links in course widget cards to redirect to correct page",
+    condition: PageController.isHomePage,
+    action: redirectCourseWidget,
   }),
   operation({
     description: "Weird page test",

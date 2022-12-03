@@ -1,6 +1,6 @@
 import { HomeRepository } from "~src/repository/homeRepository";
 
-export default () => {
+export function removeBanner() {
   let banner = HomeRepository.getInstance().getBanner();
   banner?.remove();
 };
