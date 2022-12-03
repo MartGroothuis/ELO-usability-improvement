@@ -2,9 +2,10 @@
   "private": true,
   "scripts": {
     "build-webpack-config": "tsc -p tsconfig.webpack.json",
-    "build-userscript": "webpack --config .userscripter-temp/webpack.config.js",
-    "build": "npm run build-webpack-config && npm run build-userscript && npm run clean",
-    "clean": "rmdir /s /q .userscripter-temp"
+    "build-userscript": "webpack --watch --progress --config .userscripter-temp/webpack.config.js",
+    "build": "npm run format && npm run build-webpack-config && npm run build-userscript && npm run clean",
+    "clean": "rmdir /s /q .userscripter-temp",
+    "format": "npx prettier --write \"src/**/*.ts\""
   },
   "dependencies": {
     "@typed/compose": "^1.0.0",

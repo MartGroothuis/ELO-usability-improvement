@@ -11,4 +11,4 @@ export function widenWidgets() {
     let widget = widgets[0];
     Actions.replaceClassName(widget, "homepage-col-6", "homepage-col-12");
   }
-};
+}

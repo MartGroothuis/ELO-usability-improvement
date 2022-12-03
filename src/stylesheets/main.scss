@@ -3,7 +3,7 @@ $HEADING_PREFIX_AND_SUFFIX: " ★ ";
 
 :root {
   --main-color: #05acff;
-  --main-text-color: #000;
+  --main-text-color: #fff;
   // --d2l-color-celestine: #ffcb05;
 }
 
@@ -12,7 +12,7 @@ html {
   --d2l-branding-primary-color: var(--main-color);
 }
 
-.main-color {
+.main-color, #app .theme-background {
   background-color: var(--main-color);
 }
 
@@ -26,8 +26,9 @@ html {
 .d2l-branding-navigation-dark-foreground-color
   .d2l-navigation-s-group
   .d2l-navigation-s-group-wrapper
-  d2l-icon {
-  color: var(--main-text-color);
+  d2l-icon,
+.module-triangle {
+  color: var(--main-text-color) !important;
 }
 
 // html body {

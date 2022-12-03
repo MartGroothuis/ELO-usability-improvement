@@ -5,9 +5,14 @@ import { Operation, operation } from "userscripter/lib/operations";
 import { P, Preferences } from "~src/preferences";
 import * as SITE from "~src/site";
 import { PageController } from "./controller/pageController";
+import removeContainer from "./operations/courseContent/removeContainer";
 
 import modifyMenuBar from "./operations/global/modifyMenuBar";
-import { redirectCourseWidget, removeBanner, widenWidgets } from "./operations/home";
+import {
+  redirectCourseWidget,
+  removeBanner,
+  widenWidgets,
+} from "./operations/home";
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
   operation({
@@ -26,25 +31,31 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
     action: widenWidgets,
   }),
   operation({
-    description: "Change links in course widget cards to redirect to correct page",
+    description:
+      "Change links in course widget cards to redirect to correct page",
     condition: PageController.isHomePage,
     action: redirectCourseWidget,
   }),
   operation({
+    description: "Remove container from course content",
+    condition: PageController.isCoursePage,
+    action: removeContainer,
+  }),
+  operation({
     description: "Weird page test",
     condition: PageController.isWeirdBetweenPage,
-    action: () => console.log("weird page")
+    action: () => console.log("weird page"),
   }),
   operation({
     description: "Home page test",
     condition: PageController.isHomePage,
-    action: () => console.log("home page")
+    action: () => console.log("home page"),
   }),
   operation({
     description: "Course page test",
     condition: PageController.isCoursePage,
-    action: () => console.log("course page")
-  })
+    action: () => console.log("course page"),
+  }),
 ];
 
 export default OPERATIONS;
