@@ -1,4 +1,3 @@
-
 // ==UserScript==
 // @name          ELO
 // @match         *://leren.windesheim.nl/*
