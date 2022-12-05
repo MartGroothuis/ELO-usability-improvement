@@ -18,10 +18,25 @@ export class GlobalRepository {
 
   // This is the main menu bar
   public async getMenuBar(): Promise<Element> {
-    let menuBar = document.getElementsByClassName(
-      "d2l-branding-navigation-background-color d2l-visible-on-ancestor-target"
-    )[0];
+    // try every 10 ms to find this element and return a promise when it is found
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        tries++;
 
-    return await Actions.waitForElementToLoad(menuBar);
+        let menuBar = document.getElementsByClassName(
+          "d2l-branding-navigation-background-color d2l-visible-on-ancestor-target"
+        )[0];
+
+        if (menuBar) {
+          clearInterval(interval);
+          resolve(menuBar);
+        }
+        if (tries > 1000) {
+          clearInterval(interval);
+          reject();
+        }
+      }, 10);
+    });
   }
 }

@@ -17,31 +17,92 @@ export class HomeRepository {
   }
 
   public async getBanner(): Promise<Element> {
-    let banner = document.getElementById("CourseImageBannerPlaceholderId");
+    // try every 10 ms to find this element and return a promise when it is found
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        tries++;
 
-    return await Actions.waitForElementToLoad(banner);
+        let banner = document.getElementById("CourseImageBannerPlaceholderId");
+
+        if (banner) {
+          clearInterval(interval);
+          resolve(banner);
+        }
+        if (tries > 1000) {
+          clearInterval(interval);
+          reject();
+        }
+      }, 10);
+    });
   }
 
   public async getWidgets(): Promise<HTMLCollection> {
-    let widgets = document.getElementsByClassName("homepage-col-6");
+    // try every 10 ms to find this element and return a promise when it is found
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        tries++;
 
-    return await Actions.waitForHTMLCollectionToLoad(widgets);
+        let widgets = document.getElementsByClassName("homepage-col-6");
+
+        if (widgets) {
+          clearInterval(interval);
+          resolve(widgets);
+        }
+        if (tries > 1000) {
+          clearInterval(interval);
+          reject();
+        }
+      }, 10);
+    });
   }
 
-  public async getCourses(): Promise<HTMLCollection> {
-    // The index 0 here is for how high the course wrapper finds itself on the page compared to all the other homepage-col-12 items
-    let courses = document.getElementsByClassName(
-      "d2l-my-courses-widget d2l-token-receiver"
-    )[0].shadowRoot?.children[0]?.shadowRoot?.children[2]?.children[0]
-      ?.children[0]?.shadowRoot?.children[1]?.shadowRoot?.children[1]?.children;
+  public getCourses(): Promise<HTMLCollection> {
+    // try every 10 ms to find this element and return a promise when it is found
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        tries++;
 
-    return await Actions.waitForHTMLCollectionToLoad(courses);
+        // The index 0 here is for how high the course wrapper finds itself on the page compared to all the other homepage-col-12 items
+        let courses = document.getElementsByClassName(
+          "d2l-my-courses-widget d2l-token-receiver"
+        )[0].shadowRoot?.children[0]?.shadowRoot?.children[2]?.children[0]
+          ?.children[0]?.shadowRoot?.children[1]?.shadowRoot?.children[1]
+          ?.children;
+
+        if (courses) {
+          clearInterval(interval);
+          resolve(courses);
+        }
+        if (tries > 1000) {
+          clearInterval(interval);
+          reject();
+        }
+      }, 10);
+    });
   }
 
-  public async getCourseUrlFromCourse(course: Element): Promise<Element> {
-    let courseUrl =
-      course.shadowRoot?.children[1].shadowRoot?.children[0].children[0];
+  public getCourseUrlFromCourse(course: Element): Promise<Element> {
+    // try every 10 ms to find this element and return a promise when it is found
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        tries++;
 
-    return await Actions.waitForElementToLoad(courseUrl);
+        let courseUrl =
+          course.shadowRoot?.children[1].shadowRoot?.children[0].children[0];
+
+        if (courseUrl) {
+          clearInterval(interval);
+          resolve(courseUrl);
+        }
+        if (tries > 1000) {
+          clearInterval(interval);
+          reject();
+        }
+      }, 10);
+    });
   }
 }

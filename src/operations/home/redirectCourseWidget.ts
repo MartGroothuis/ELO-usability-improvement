@@ -4,17 +4,17 @@ export function redirectCourseWidget() {
   HomeRepository.getInstance()
     .getCourses()
     .then((courses) => {
-      console.log(courses);
       for (let i = 0; i < courses.length; i++) {
-        HomeRepository.getInstance()
-          .getCourseUrlFromCourse(courses[i])
-          .then((url) => {
-            const courseId = url
-              .getAttribute("href")
-              ?.replace("/d2l/home/", "");
-            url.setAttribute("href", `/d2l/le/content/${courseId}/Home`);
-          });
+        updateUrl(courses[i]);
       }
     });
-  console.log("container getInstance");
+}
+
+function updateUrl(course: Element) {
+  HomeRepository.getInstance()
+    .getCourseUrlFromCourse(course)
+    .then((url) => {
+      const courseId = url.getAttribute("href")?.replace("/d2l/home/", "");
+      url.setAttribute("href", `/d2l/le/content/${courseId}/Home`);
+    });
 }
