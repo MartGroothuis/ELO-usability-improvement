@@ -2,6 +2,7 @@ import { BuildConfig, metadataUrl } from "userscripter/build";
 import { Metadata } from "userscript-metadata";
 
 import U from "./src/userscript";
+import { Actions } from "./src/controller/actions";
 
 export default function (buildConfig: BuildConfig): Metadata {
   const hostedAt = buildConfig.hostedAt;
@@ -10,7 +11,7 @@ export default function (buildConfig: BuildConfig): Metadata {
     version: U.version,
     description: U.description,
     author: U.author,
-    match: [`*://${U.hostname}/*`, `*://www.${U.hostname}/*`],
+    match: Actions.hostnameToHostnameList(U.hostname),
     namespace: U.namespace,
     run_at: U.runAt,
     ...(hostedAt === null

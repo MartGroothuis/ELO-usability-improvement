@@ -40,3 +40,11 @@ html {
 // #{$SELECTOR_HEADING}::before, #{$SELECTOR_HEADING}::after {
 //     content: "#{$HEADING_PREFIX_AND_SUFFIX}";
 // }
+
+.main {
+  position: unset !important;
+}
+
+.content-panel {
+  padding: 0 !important;
+}
