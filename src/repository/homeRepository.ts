@@ -59,7 +59,8 @@ export class HomeRepository {
       let interval = setInterval(() => {
         tries++;
 
-        let courseUrl = course.shadowRoot?.children[1].shadowRoot?.children[0].children[0];
+        let courseUrl =
+          course.shadowRoot?.children[1].shadowRoot?.children[0].children[0];
 
         if (tries > 1000 || courseUrl === undefined) {
           clearInterval(interval);

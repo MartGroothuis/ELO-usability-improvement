@@ -23,7 +23,7 @@ export class CourseRepository {
         let container = document.getElementsByClassName("main")[0];
         if (container) {
           clearInterval(interval);
-            resolve(container);
+          resolve(container);
         }
         if (tries > 1000) {
           clearInterval(interval);
