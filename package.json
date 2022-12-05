@@ -7,6 +7,9 @@
     "clean": "rmdir /s /q .userscripter-temp",
     "format": "npx prettier --write \"src/**/*.ts\""
   },
+  "pre-commit": [
+      "format"
+  ],
   "dependencies": {
     "@typed/compose": "^1.0.0",
     "@types/app-root-path": "^1.2.4",
@@ -23,6 +26,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
-    "eslint": "^8.28.0"
+    "eslint": "^8.28.0",
+    "pre-commit": "^1.2.2"
   }
 }
