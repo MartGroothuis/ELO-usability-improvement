@@ -1,3 +1,5 @@
+import { Actions } from "~src/controller/actions";
+
 export class CourseRepository {
   private static instance: CourseRepository;
   private rootElement: string;
@@ -14,22 +16,9 @@ export class CourseRepository {
     return this.instance;
   }
 
-  public getContainer(): Promise<Element> {
-    // try every 10 ms to find this element and return a promise when it is found
-    let tries = 0;
-    return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
-        tries++;
-        let container = document.getElementsByClassName("main")[0];
-        if (container) {
-          clearInterval(interval);
-          resolve(container);
-        }
-        if (tries > 1000) {
-          clearInterval(interval);
-          reject();
-        }
-      }, 10);
-    });
+  public async getContainer(): Promise<Element> {
+    let container = document.getElementsByClassName("main")[0];
+
+    return await Actions.waitForElementToLoad(container);
   }
 }

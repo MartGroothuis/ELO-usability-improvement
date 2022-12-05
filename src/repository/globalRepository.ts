@@ -1,3 +1,5 @@
+import { Actions } from "~src/controller/actions";
+
 export class GlobalRepository {
   private static instance: GlobalRepository;
   private rootElement: string;
@@ -15,10 +17,11 @@ export class GlobalRepository {
   }
 
   // This is the main menu bar
-  getMenuBar() {
+  public async getMenuBar(): Promise<Element> {
     let menuBar = document.getElementsByClassName(
       "d2l-branding-navigation-background-color d2l-visible-on-ancestor-target"
     )[0];
-    return menuBar;
+
+    return await Actions.waitForElementToLoad(menuBar);
   }
 }
