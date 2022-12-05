@@ -34,8 +34,11 @@ export class HomeRepository {
         tries++;
 
         // The index 0 here is for how high the course wrapper finds itself on the page compared to all the other homepage-col-12 items
-        let courses =
-			document.getElementsByClassName("d2l-my-courses-widget d2l-token-receiver")[0].shadowRoot?.children[0]?.shadowRoot?.children[2]?.children[0]?.children[0]?.shadowRoot?.children[1]?.shadowRoot?.children[1]?.children;
+        let courses = document.getElementsByClassName(
+          "d2l-my-courses-widget d2l-token-receiver"
+        )[0].shadowRoot?.children[0]?.shadowRoot?.children[2]?.children[0]
+          ?.children[0]?.shadowRoot?.children[1]?.shadowRoot?.children[1]
+          ?.children;
 
         if (courses) {
           clearInterval(interval);
@@ -44,6 +47,26 @@ export class HomeRepository {
         if (tries > 1000) {
           clearInterval(interval);
           reject();
+        }
+      }, 10);
+    });
+  }
+
+  public getCourseUrlFromCourse(course: Element): Promise<Element> {
+    // try every 10 ms to find this element and return a promise when it is found
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        tries++;
+
+        let courseUrl = course.shadowRoot?.children[1].shadowRoot?.children[0].children[0];
+
+        if (tries > 1000 || courseUrl === undefined) {
+          clearInterval(interval);
+          reject();
+        } else if (courseUrl) {
+          clearInterval(interval);
+          resolve(courseUrl);
         }
       }, 10);
     });
