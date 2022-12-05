@@ -4,8 +4,8 @@ export function redirectCourseWidget() {
   HomeRepository.getInstance()
     .getCourses()
     .then((courses) => {
+      console.log(courses);
       for (let i = 0; i < courses.length; i++) {
-        // window.location.replace(`/d2l/le/content/${courseCode}/Home`);
         HomeRepository.getInstance()
           .getCourseUrlFromCourse(courses[i])
           .then((url) => {
