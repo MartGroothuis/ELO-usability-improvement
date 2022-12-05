@@ -2,6 +2,7 @@ import { BuildConfig, distFileName } from "userscripter/build";
 import Manifest from "webextension-manifest";
 
 import U from "./src/userscript";
+import { Actions } from "./src/controller/actions";
 
 export default function (_: BuildConfig): Manifest {
   return {
@@ -12,7 +13,7 @@ export default function (_: BuildConfig): Manifest {
     author: U.author,
     content_scripts: [
       {
-        matches: [`*://${U.hostname}/*`, `*://www.${U.hostname}/*`],
+        matches: Actions.hostnameToHostnameList(U.hostname),
         js: [distFileName(U.id, "user")],
         run_at: "document_start",
       },
