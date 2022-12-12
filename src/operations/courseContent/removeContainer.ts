@@ -5,11 +5,6 @@ export default () => {
   CourseRepository.getInstance()
     .getContainer()
     .then((container) => {
-      console.log("container found");
       Actions.removeClassName(container, "main");
-    })
-    .finally(() => {
-      console.log("container not found");
     });
-  console.log("container getInstance");
 };

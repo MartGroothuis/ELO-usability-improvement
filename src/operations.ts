@@ -50,21 +50,6 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
     condition: PageController.isCoursePage,
     action: removeContainer,
   }),
-  operation({
-    description: "Weird page test",
-    condition: PageController.isWeirdBetweenPage,
-    action: () => console.log("weird page"),
-  }),
-  operation({
-    description: "Home page test",
-    condition: PageController.isHomePage,
-    action: () => console.log("home page"),
-  }),
-  operation({
-    description: "Course page test",
-    condition: PageController.isCoursePage,
-    action: () => console.log("course page"),
-  }),
 ];
 
 export default OPERATIONS;
