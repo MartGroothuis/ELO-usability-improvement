@@ -48,9 +48,7 @@ export class GlobalRepository {
         tries++;
 
         //d2l-navigation-main-header querySelector
-        let navigation = document.querySelector(
-          "d2l-navigation-main-header"
-        );
+        let navigation = document.querySelector("d2l-navigation-main-header");
 
         if (navigation?.shadowRoot) {
           clearInterval(interval);
