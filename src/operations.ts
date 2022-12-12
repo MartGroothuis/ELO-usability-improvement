@@ -1,73 +1,70 @@
-import { log } from "userscripter";
-import { ALWAYS, DOMCONTENTLOADED } from "userscripter/lib/environment";
-import { Operation, operation } from "userscripter/lib/operations";
+import { ALWAYS } from 'userscripter/lib/environment'
+import { Operation, operation } from 'userscripter/lib/operations'
 
-import { P, Preferences } from "~src/preferences";
-import * as SITE from "~src/site";
-import { PageController } from "./controller/pageController";
-import removeContainer from "./operations/courseContent/removeContainer";
-import modifyHeaderImg from "./operations/global/modifyHeaderImg";
+import { PageController } from './controller/pageController'
+import removeContainer from './operations/courseContent/removeContainer'
+import modifyHeaderImg from './operations/global/modifyHeaderImg'
 
-import modifyMenuBar from "./operations/global/modifyMenuBar";
-import modifyNavigationBar from "./operations/global/modifyNavigationBar";
+import modifyMenuBar from './operations/global/modifyMenuBar'
+import modifyNavigationBar from './operations/global/modifyNavigationBar'
 import {
   redirectCourseWidget,
   removeBanner,
   widenWidgets,
-} from "./operations/home";
+} from './operations/home'
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
   operation({
-    description: "modify header",
+    description: 'modify header',
     condition: ALWAYS,
     action: modifyMenuBar,
   }),
   operation({
-    description: "modify header img",
+    description: 'modify header img',
     condition: ALWAYS,
     action: modifyHeaderImg,
   }),
   operation({
-    description: "modify navigation bar",
+    description: 'modify navigation bar',
     condition: ALWAYS,
     action: modifyNavigationBar,
   }),
   operation({
-    description: "Remove home page banner",
+    description: 'Remove home page banner',
     condition: PageController.isHomePage,
     action: removeBanner,
   }),
   operation({
-    description: "Make home page widgets full page width",
+    description: 'Make home page widgets full page width',
     condition: PageController.isHomePage,
     action: widenWidgets,
   }),
   operation({
     description:
-      "Change links in course widget cards to redirect to correct page",
+      'Change links in course widget cards to redirect to correct page',
     condition: PageController.isHomePage,
     action: redirectCourseWidget,
   }),
   operation({
-    description: "Remove container from course content",
+    description: 'Remove container from course content',
     condition: PageController.isCoursePage,
     action: removeContainer,
   }),
   operation({
-    description: "Weird page test",
+    description: 'Weird page test',
     condition: PageController.isWeirdBetweenPage,
-    action: () => console.log("weird page"),
+    action: () => console.log('weird page'),
   }),
   operation({
-    description: "Home page test",
+    description: 'Home page test',
     condition: PageController.isHomePage,
-    action: () => console.log("home page"),
+    action: () => console.log('home page'),
   }),
   operation({
-    description: "Course page test",
+    description: 'Course page test',
     condition: PageController.isCoursePage,
-    action: () => console.log("course page"),
+    action: () => console.log('course page'),
   }),
-];
+]
 
-export default OPERATIONS;
+export default OPERATIONS
