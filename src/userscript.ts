@@ -7,6 +7,6 @@ export default {
   hostname: ["leren.windesheim.nl", "s.brightspace.com"],
   sitename: "leren.windesheim.nl",
   namespace: "https://github.com/MartGroothuis/",
-  runAt: "document-end",
+  runAt: "document-body",
   hostedAt: "https://example.com/userscripts/",
 } as const;
