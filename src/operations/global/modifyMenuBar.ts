@@ -6,5 +6,6 @@ export default () => {
     .getMenuBar()
     .then((element) => {
       Actions.addClassName(element, "main-color");
+      Actions.addClassName(element, "font-size-16");
     });
 };
