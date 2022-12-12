@@ -68,7 +68,7 @@ export class HomeRepository {
         // The index 0 here is for how high the course wrapper finds itself on the page compared to all the other homepage-col-12 items
         let courses = document.getElementsByClassName(
           "d2l-my-courses-widget d2l-token-receiver"
-        )[0].shadowRoot?.children[0]?.shadowRoot?.children[2]?.children[0]
+        )?.[0]?.shadowRoot?.children[0]?.shadowRoot?.children[2]?.children[0]
           ?.children[0]?.shadowRoot?.children[1]?.shadowRoot?.children[1]
           ?.children;
 
@@ -92,7 +92,7 @@ export class HomeRepository {
         tries++;
 
         let courseUrl =
-          course.shadowRoot?.children[1].shadowRoot?.children[0].children[0];
+          course?.shadowRoot?.children[1].shadowRoot?.children[0].children[0];
 
         if (courseUrl) {
           clearInterval(interval);
