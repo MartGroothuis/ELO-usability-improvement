@@ -1,5 +1,3 @@
-import { Actions } from "~src/controller/actions";
-
 export class HomeRepository {
   private static instance: HomeRepository;
   private rootElement: string;
@@ -20,10 +18,12 @@ export class HomeRepository {
     // try every 10 ms to find this element and return a promise when it is found
     let tries = 0;
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         tries++;
 
-        let banner = document.getElementById("CourseImageBannerPlaceholderId");
+        const banner = document.getElementById(
+          "CourseImageBannerPlaceholderId"
+        );
 
         if (banner) {
           clearInterval(interval);
@@ -41,10 +41,10 @@ export class HomeRepository {
     // try every 10 ms to find this element and return a promise when it is found
     let tries = 0;
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         tries++;
 
-        let widgets = document.getElementsByClassName("homepage-col-6");
+        const widgets = document.getElementsByClassName("homepage-col-6");
 
         if (widgets) {
           clearInterval(interval);
@@ -62,11 +62,11 @@ export class HomeRepository {
     // try every 10 ms to find this element and return a promise when it is found
     let tries = 0;
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         tries++;
 
         // The index 0 here is for how high the course wrapper finds itself on the page compared to all the other homepage-col-12 items
-        let courses = document.getElementsByClassName(
+        const courses = document.getElementsByClassName(
           "d2l-my-courses-widget d2l-token-receiver"
         )?.[0]?.shadowRoot?.children[0]?.shadowRoot?.children[2]?.children[0]
           ?.children[0]?.shadowRoot?.children[1]?.shadowRoot?.children[1]
@@ -88,10 +88,10 @@ export class HomeRepository {
     // try every 10 ms to find this element and return a promise when it is found
     let tries = 0;
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         tries++;
 
-        let courseUrl =
+        const courseUrl =
           course?.shadowRoot?.children[1].shadowRoot?.children[0].children[0];
 
         if (courseUrl) {

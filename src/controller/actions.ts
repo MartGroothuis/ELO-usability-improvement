@@ -16,7 +16,7 @@ export class Actions {
   }
 
   public static hostnameToHostnameList(hostnames: readonly string[]): string[] {
-    let hostnameList = [];
+    const hostnameList = [];
     for (let i = 0; i < hostnames.length; i++) {
       hostnameList.push(`*://${hostnames[i]}/*`);
       hostnameList.push(`*://www.${hostnames[i]}/*`);

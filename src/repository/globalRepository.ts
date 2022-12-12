@@ -1,5 +1,3 @@
-import { Actions } from "~src/controller/actions";
-
 export class GlobalRepository {
   private static instance: GlobalRepository;
   private rootElement: string;
@@ -21,10 +19,10 @@ export class GlobalRepository {
     // try every 10 ms to find this element and return a promise when it is found
     let tries = 0;
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         tries++;
 
-        let menuBar = document.getElementsByClassName(
+        const menuBar = document.getElementsByClassName(
           "d2l-branding-navigation-background-color d2l-visible-on-ancestor-target"
         )[0];
 
@@ -44,15 +42,39 @@ export class GlobalRepository {
   public async getNavigation(): Promise<Element> {
     let tries = 0;
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         tries++;
 
         //d2l-navigation-main-header querySelector
-        let navigation = document.querySelector("d2l-navigation-main-header");
+        const navigation = document.querySelector("d2l-navigation-main-header");
 
         if (navigation?.shadowRoot) {
           clearInterval(interval);
           resolve(navigation);
+        }
+        if (tries > 1000) {
+          clearInterval(interval);
+          reject();
+        }
+      }, 10);
+    });
+  }
+
+  // Get the header img
+  public async getHeaderImg(): Promise<HTMLImageElement> {
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      const interval = setInterval(() => {
+        tries++;
+
+        const headerImg = document.querySelector("d2l-navigation-link-image");
+        const shadowRoot = headerImg?.shadowRoot?.children[0];
+        const imgWrapper = shadowRoot?.children[1];
+        const img = imgWrapper?.children[0] as HTMLImageElement;
+
+        if (img) {
+          clearInterval(interval);
+          resolve(img);
         }
         if (tries > 1000) {
           clearInterval(interval);

@@ -1,8 +1,6 @@
 import { ALWAYS } from "userscripter/lib/environment";
 import { Stylesheets, stylesheet } from "userscripter/lib/stylesheets";
 
-import { P, Preferences } from "~src/preferences";
-
 import stylesheetMain from "./stylesheets/main.scss";
 
 function i(x: string) {

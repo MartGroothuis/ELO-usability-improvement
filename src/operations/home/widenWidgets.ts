@@ -9,7 +9,7 @@ export function widenWidgets() {
       // and therefore the array will become one smaller. By always using the 0 index in the while loop you will eventualy pass
       // every item in the array
       while (widgets.length > 0) {
-        let widget = widgets[0];
+        const widget = widgets[0];
         Actions.replaceClassName(widget, "homepage-col-6", "homepage-col-12");
       }
     });

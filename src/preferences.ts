@@ -39,11 +39,11 @@ export const P = {
     constraints: [
       {
         requirement: (v) => !/^\s/.test(v),
-        message: (_) => `Leading whitespace not allowed.`,
+        message: (_) => "Leading whitespace not allowed.",
       },
       {
         requirement: (v) => !/\s$/.test(v),
-        message: (_) => `Trailing whitespace not allowed.`,
+        message: (_) => "Trailing whitespace not allowed.",
       },
     ],
   }),

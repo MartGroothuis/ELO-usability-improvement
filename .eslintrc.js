@@ -12,9 +12,9 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   rules: {
-    indent: ["error", 4],
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "single"],
-    semi: ["error", "never"],
+    indent: ["warn", 2],
+    "linebreak-style": ["warn", "unix"],
+    quotes: ["warn", "single"],
+    semi: ["warn", "never"],
   },
 };

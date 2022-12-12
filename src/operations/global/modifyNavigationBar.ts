@@ -5,7 +5,7 @@ export default () => {
   GlobalRepository.getInstance()
     .getNavigation()
     .then((element) => {
-      let style = document.createElement("style");
+      const style = document.createElement("style");
       style.innerHTML = `
       .d2l-navigation-header-container {
         height: 70px !important;

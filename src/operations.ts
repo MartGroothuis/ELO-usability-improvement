@@ -1,11 +1,9 @@
-import { log } from "userscripter";
-import { ALWAYS, DOMCONTENTLOADED } from "userscripter/lib/environment";
+import { ALWAYS } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
 
-import { P, Preferences } from "~src/preferences";
-import * as SITE from "~src/site";
 import { PageController } from "./controller/pageController";
 import removeContainer from "./operations/courseContent/removeContainer";
+import modifyHeaderImg from "./operations/global/modifyHeaderImg";
 
 import modifyMenuBar from "./operations/global/modifyMenuBar";
 import modifyNavigationBar from "./operations/global/modifyNavigationBar";
@@ -20,6 +18,11 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
     description: "modify header",
     condition: ALWAYS,
     action: modifyMenuBar,
+  }),
+  operation({
+    description: "modify header img",
+    condition: ALWAYS,
+    action: modifyHeaderImg,
   }),
   operation({
     description: "modify navigation bar",

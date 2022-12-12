@@ -1,5 +1,3 @@
-import { Actions } from "~src/controller/actions";
-
 export class CourseRepository {
   private static instance: CourseRepository;
   private rootElement: string;
@@ -20,10 +18,10 @@ export class CourseRepository {
     // try every 10 ms to find this element and return a promise when it is found
     let tries = 0;
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         tries++;
 
-        let container = document.getElementsByClassName("main")[0];
+        const container = document.getElementsByClassName("main")[0];
 
         if (container) {
           clearInterval(interval);
