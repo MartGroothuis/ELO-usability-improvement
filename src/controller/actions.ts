@@ -1,10 +1,10 @@
 export class Actions {
   public static removeClassName(element: Element, className: string) {
-    element.classList.remove(className)
+    element.classList.remove(className);
   }
 
   public static addClassName(element: Element, className: string) {
-    element.classList.add(className)
+    element.classList.add(className);
   }
 
   public static replaceClassName(
@@ -12,15 +12,15 @@ export class Actions {
     oldName: string,
     newName: string
   ) {
-    element.className = element.className.replace(oldName, newName)
+    element.className = element.className.replace(oldName, newName);
   }
 
   public static hostnameToHostnameList(hostnames: readonly string[]): string[] {
-    const hostnameList = []
+    const hostnameList = [];
     for (let i = 0; i < hostnames.length; i++) {
-      hostnameList.push(`*://${hostnames[i]}/*`)
-      hostnameList.push(`*://www.${hostnames[i]}/*`)
+      hostnameList.push(`*://${hostnames[i]}/*`);
+      hostnameList.push(`*://www.${hostnames[i]}/*`);
     }
-    return hostnameList
+    return hostnameList;
   }
 }
