@@ -39,4 +39,28 @@ export class GlobalRepository {
       }, 10);
     });
   }
+
+  // get the d2l-navigation-main-header
+  public async getNavigation(): Promise<Element> {
+    let tries = 0;
+    return new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        tries++;
+
+        //d2l-navigation-main-header querySelector
+        let navigation = document.querySelector(
+          "d2l-navigation-main-header"
+        );
+
+        if (navigation?.shadowRoot) {
+          clearInterval(interval);
+          resolve(navigation);
+        }
+        if (tries > 1000) {
+          clearInterval(interval);
+          reject();
+        }
+      }, 10);
+    });
+  }
 }

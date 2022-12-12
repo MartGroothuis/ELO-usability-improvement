@@ -8,6 +8,7 @@ import { PageController } from "./controller/pageController";
 import removeContainer from "./operations/courseContent/removeContainer";
 
 import modifyMenuBar from "./operations/global/modifyMenuBar";
+import modifyNavigationBar from "./operations/global/modifyNavigationBar";
 import {
   redirectCourseWidget,
   removeBanner,
@@ -19,6 +20,11 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
     description: "modify header",
     condition: ALWAYS,
     action: modifyMenuBar,
+  }),
+  operation({
+    description: "modify navigation bar",
+    condition: ALWAYS,
+    action: modifyNavigationBar,
   }),
   operation({
     description: "Remove home page banner",

@@ -48,3 +48,24 @@ html {
 .content-panel {
   padding: 0 !important;
 }
+
+.d2l-navigation-s-main-wrapper {
+  height: calc(1rem + 25px);
+}
+
+d2l-button-icon {
+  padding: 0 !important;
+}
+
+.content-panel-header {
+  min-height: unset !important;
+  height: 45px !important;
+}
+
+#root-wrapper {
+  padding-top: 0 !important;
+}
+
+.error-alert-container {
+  margin-top: 0 !important;
+}
