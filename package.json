@@ -5,7 +5,8 @@
     "build-userscript": "webpack --watch --progress --config .userscripter-temp/webpack.config.js",
     "build": "npm run build-webpack-config && npm run build-userscript && npm run clean",
     "clean": "rmdir /s /q .userscripter-temp",
-    "format": "npx prettier --write ."
+    "format": "npx prettier --write .",
+    "start": "npx web-ext run --source-dir ./dist/ --start-url leren.windesheim.nl/"
   },
   "pre-commit": [
     "format"
