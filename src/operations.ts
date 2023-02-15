@@ -3,10 +3,12 @@ import { Operation, operation } from "userscripter/lib/operations";
 
 import { PageController } from "./controller/pageController";
 import removeContainer from "./operations/courseContent/removeContainer";
+import addCollapseBar from "./operations/global/addCollapseBar";
 import modifyHeaderImg from "./operations/global/modifyHeaderImg";
 
 import modifyMenuBar from "./operations/global/modifyMenuBar";
 import modifyNavigationBar from "./operations/global/modifyNavigationBar";
+
 import {
   redirectCourseWidget,
   removeBanner,
@@ -18,6 +20,11 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
     description: "modify header",
     condition: ALWAYS,
     action: modifyMenuBar,
+  }),
+  operation({
+    description: "Add collapse bar",
+    condition: ALWAYS,
+    action: addCollapseBar
   }),
   operation({
     description: "modify header img",
